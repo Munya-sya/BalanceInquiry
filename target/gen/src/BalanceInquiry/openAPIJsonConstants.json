@@ -1,0 +1,408 @@
+{
+
+"Mock_space_KCB_space_Balance_space_inquiry__1_0_0" : {
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Mock KCB Balance inquiry",
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "http://mock-kcb-mg-balance-inquiry-remitance.apps.dev.aro.kcbgroup.com"
+  } ],
+  "security" : [ {
+    "default" : [ ]
+  } ],
+  "tags" : [ {
+    "name" : "BalanceInquiry"
+  } ],
+  "paths" : {
+    "/api/balance/services" : {
+      "post" : {
+        "tags" : [ "BalanceInquiry" ],
+        "description" : "Mock Balance Inquiry",
+        "operationId" : "KCB Mock Balance Inquiry",
+        "parameters" : [ {
+          "name" : "channelCode",
+          "in" : "header",
+          "description" : "channelcode",
+          "required" : false,
+          "style" : "SIMPLE",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "102"
+          }
+        }, {
+          "name" : "messageID",
+          "in" : "header",
+          "description" : "Message ID",
+          "required" : false,
+          "style" : "SIMPLE",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "BI-06/20/2022"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/requestBody"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/responseBody"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Failure",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "Unexpected error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "default" : [ ]
+        } ],
+        "extensions" : {
+          "x-auth-type" : "Application & Application User",
+          "x-throttling-tier" : "Unlimited",
+          "x-wso2-application-security" : {
+            "security-types" : [ "oauth2", "basic_auth" ],
+            "optional" : false
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "requestBody" : {
+        "required" : [ "header", "requestPayload" ],
+        "type" : "object",
+        "properties" : {
+          "header" : {
+            "$ref" : "#/components/schemas/requestHeader"
+          },
+          "requestPayload" : {
+            "$ref" : "#/components/schemas/requestPayload"
+          }
+        }
+      },
+      "requestHeader" : {
+        "required" : [ "callBackURL", "channelCode", "channelName", "featureCode", "messageID", "minorServiceVersion", "routeCode", "serviceCode", "serviceMode", "serviceSubCategory", "subscribeEvents", "timeStamp" ],
+        "type" : "object",
+        "properties" : {
+          "messageID" : {
+            "maxLength" : 16,
+            "type" : "string",
+            "description" : "Message ID",
+            "example" : "06/20/2022"
+          },
+          "featureCode" : {
+            "maxLength" : 3,
+            "type" : "string",
+            "description" : "Feature Code",
+            "example" : "101"
+          },
+          "featureName" : {
+            "maxLength" : 16,
+            "type" : "string",
+            "description" : "Feature Name",
+            "example" : "FinancialInquiries"
+          },
+          "serviceCode" : {
+            "maxLength" : 4,
+            "type" : "string",
+            "description" : "Service Code",
+            "example" : "1001"
+          },
+          "serviceName" : {
+            "maxLength" : 16,
+            "type" : "string",
+            "description" : "Service Name",
+            "example" : "BalanceInquiry"
+          },
+          "serviceSubCategory" : {
+            "maxLength" : 16,
+            "type" : "string",
+            "description" : "Service Sub Category",
+            "example" : "ACCOUNT"
+          },
+          "minorServiceVersion" : {
+            "maxLength" : 3,
+            "type" : "string",
+            "description" : "Minor Service Version",
+            "example" : "1.0"
+          },
+          "channelCode" : {
+            "maxLength" : 3,
+            "type" : "string",
+            "description" : "Channel Code",
+            "example" : "102"
+          },
+          "channelName" : {
+            "maxLength" : 15,
+            "type" : "string",
+            "description" : "Channel Name",
+            "example" : "agency"
+          },
+          "routeCode" : {
+            "maxLength" : 3,
+            "type" : "string",
+            "description" : "Route Code",
+            "example" : "001"
+          },
+          "timeStamp" : {
+            "maxLength" : 14,
+            "type" : "string",
+            "description" : "Time Stamp",
+            "example" : "22222"
+          },
+          "serviceMode" : {
+            "maxLength" : 5,
+            "type" : "string",
+            "description" : "Service Mode",
+            "example" : "sync"
+          },
+          "subscribeEvents" : {
+            "maxLength" : 1,
+            "type" : "string",
+            "description" : "Subscribe Events",
+            "example" : "1"
+          },
+          "callBackURL" : {
+            "maxLength" : 128,
+            "type" : "string",
+            "description" : "Call back URL"
+          }
+        }
+      },
+      "requestPayload" : {
+        "required" : [ "additionalData", "primaryData" ],
+        "type" : "object",
+        "properties" : {
+          "primaryData" : {
+            "$ref" : "#/components/schemas/primaryData"
+          },
+          "additionalData" : {
+            "$ref" : "#/components/schemas/additionalData"
+          }
+        }
+      },
+      "primaryData" : {
+        "required" : [ "businessKey", "businessKeyType" ],
+        "type" : "object",
+        "properties" : {
+          "businessKey" : {
+            "maxLength" : 12,
+            "type" : "string",
+            "description" : "Business Key. Here it will be Mobile Number",
+            "example" : "1250585001"
+          },
+          "businessKeyType" : {
+            "maxLength" : 12,
+            "type" : "string",
+            "description" : "Description of Key Type. Here it will be value ‘MSISDN’",
+            "example" : "AccountNumber"
+          }
+        }
+      },
+      "additionalData" : {
+        "required" : [ "chargeCustomer", "companyCode" ],
+        "type" : "object",
+        "properties" : {
+          "companyCode" : {
+            "type" : "string",
+            "example" : "KE0010001"
+          },
+          "chargeCustomer" : {
+            "type" : "string",
+            "example" : "NO"
+          }
+        }
+      },
+      "responseBody" : {
+        "required" : [ "data", "status" ],
+        "type" : "object",
+        "properties" : {
+          "data" : {
+            "$ref" : "#/components/schemas/data"
+          },
+          "status" : {
+            "$ref" : "#/components/schemas/status"
+          }
+        }
+      },
+      "data" : {
+        "required" : [ "id", "status" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "example" : "TestId24"
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "SUCCESS"
+          }
+        }
+      },
+      "status" : {
+        "type" : "object",
+        "properties" : {
+          "code" : {
+            "type" : "string",
+            "example" : "200"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "SUCCESS"
+          },
+          "response_code" : {
+            "type" : "string",
+            "example" : "DP01000001001"
+          },
+          "success" : {
+            "type" : "boolean",
+            "example" : true
+          }
+        }
+      },
+      "Error" : {
+        "required" : [ "code", "message" ],
+        "type" : "object",
+        "properties" : {
+          "code" : {
+            "type" : "string",
+            "example" : "1"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "Processing failed"
+          }
+        }
+      }
+    },
+    "responses" : {
+      "InternalSeverError" : {
+        "description" : "Unexpected error",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "BadRequest" : {
+        "description" : "Bad request",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "Unauthorized" : {
+        "description" : "Unauthorized",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "Success" : {
+        "description" : "Success",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/responseBody"
+            }
+          }
+        }
+      },
+      "Failure" : {
+        "description" : "Failure",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/Error"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes" : {
+      "default" : {
+        "type" : "OAUTH2",
+        "flows" : {
+          "implicit" : { }
+        }
+      }
+    },
+    "extensions" : { }
+  },
+  "extensions" : {
+    "x-wso2-basePath" : "/MockBalanceInquiry/1.0.0",
+    "x-wso2-production-endpoints" : "#/x-wso2-endpoints/prodEndPoint",
+    "x-wso2-disable-security" : true,
+    "x-wso2-cors" : {
+      "corsConfigurationEnabled" : true,
+      "accessControlAllowOrigins" : [ "*" ],
+      "accessControlAllowCredentials" : true,
+      "accessControlAllowHeaders" : [ "authorization", "Access-Control-Allow-Origin", "Content-Type", "SOAPAction", "apikey", "Internal-Key" ],
+      "accessControlAllowMethods" : [ "GET", "PUT", "POST", "DELETE", "PATCH", "OPTIONS" ]
+    },
+    "x-wso2-transports" : [ "http", "https" ],
+    "x-wso2-response-cache" : {
+      "enabled" : false,
+      "cacheTimeoutInSeconds" : 300
+    },
+    "x-wso2-endpoints" : [ {
+      "prodEndPoint" : {
+        "urls" : [ "http://192.168.1.103:8080" ]
+      }
+    } ]
+  }
+}
+
+}

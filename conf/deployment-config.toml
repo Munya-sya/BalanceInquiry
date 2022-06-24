@@ -1,0 +1,70 @@
+[docker]
+  [docker.dockerConfig]
+    enable = true
+    name = "kcbbalanceinquirymock"
+    registry = 'kennedy02'
+    tag = 'v1'
+    #buildImage = ''
+    #dockerHost = ''
+    #dockerCertPath = ''
+    baseImage = 'wso2/wso2micro-gw:latest'
+    #enableDebug = ''
+    #debugPort = ''
+    #push = ''
+    #username = ''
+    #password = ''
+    #cmd = 'CMD gateway ${APP}'
+  [docker.dockerCopyFiles]
+    enable = true
+    [[docker.dockerCopyFiles.files]]
+        source = '../../conf/micro-gw.conf'
+        target = '/home/ballerina/conf/micro-gw.conf'
+        isBallerinaConf = true
+[kubernetes]
+    [kubernetes.kubernetesDeployment]
+        enable = false
+        name = 'kcbbalanceinquirymock'
+        tag = 'v1'
+        #labels = ''
+        replicas = '1'
+        #enableLiveness = ''
+        #initialDelaySeconds = ''
+        #periodSeconds = ''
+        #livenessPort = ''
+        #imagePullPolicy = 'Always'
+        #imagePullSecrets = ['secret1']
+        #image = ''
+        #env = ''
+        buildImage = false
+        #cmd = 'CMD gateway ${APP} --b7a.config.file=conf/micro-gw.conf --b7a.log.level=DEBUG'
+        #copyFiles = ''
+        #dockerHost = ''
+        #dockerCertPath = ''
+        #push = 'false'
+        #registry = 'index.docker.io/<DOCKER_USERNAME>'
+        #username = ''
+        #password = ''
+        baseImage = 'wso2/wso2micro-gw:latest'
+    [kubernetes.kubernetesDeployment.livenessProbe]
+        enable = false
+        initialDelaySeconds = '20'
+        periodSeconds = '20'
+    [kubernetes.kubernetesDeployment.readinessProbe]
+        enable = false
+        initialDelaySeconds = '30'
+        periodSeconds = '30'
+    [kubernetes.kubernetesServiceHttps]
+        enable = false
+        name = 'httpsService'
+        #labels = '{"": ""}'
+        serviceType = 'NodePort'
+        #port = ''
+    [kubernetes.kubernetesServiceHttp]
+        enable = false
+        name = 'httpService'
+        #labels = '{"": ""}'
+        serviceType = 'NodePort'
+        #port = ''
+    [kubernetes.kubernetesConfigMap]
+        enable = false
+        ballerinaConf = '../../conf/micro-gw.conf'

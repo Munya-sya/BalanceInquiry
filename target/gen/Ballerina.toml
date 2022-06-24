@@ -1,0 +1,48 @@
+[project]
+org-name= "wso2"
+version= "3.2.0"
+
+[dependencies]
+"wso2/gateway" = { path = "C:/Users/KENNED~1/DOWNLO~1/WSO2AP~2/WSO2AM~1.0/bin/../lib/gateway-balo/gateway-2020r1-java8-3.2.0.balo"}
+
+
+[platform]
+target = "java8"
+
+    [[platform.libraries]]
+        module = "jms"
+        path = "C:/Users/KENNED~1/DOWNLO~1/WSO2AP~2/WSO2AM~1.0/bin/../lib/dependencies/andes-client-3.3.9.jar"
+
+    [[platform.libraries]]
+        module = "jms"
+        path = "C:/Users/KENNED~1/DOWNLO~1/WSO2AP~2/WSO2AM~1.0/bin/../lib/dependencies/org.wso2.securevault-1.1.1.jar"
+
+    [[platform.libraries]]
+        module = "interceptor"
+        path = "C:/Users/KENNED~1/DOWNLO~1/WSO2AP~2/WSO2AM~1.0/bin/../lib/dependencies/mgw-interceptor-3.2.0.jar"
+
+    [[platform.libraries]]
+        module = "jwtTransformer"
+        path = "C:/Users/KENNED~1/DOWNLO~1/WSO2AP~2/WSO2AM~1.0/bin/../lib/dependencies/mgw-jwt-transformer-3.2.0.jar"
+
+    [[platform.libraries]]
+            module = "jwtGenerator"
+            path = "C:/Users/KENNED~1/DOWNLO~1/WSO2AP~2/WSO2AM~1.0/bin/../lib/dependencies/mgw-jwt-generator-3.2.0.jar"
+
+     [[platform.libraries]]
+        module = "gateway"
+        path = "C:/Users/KENNED~1/DOWNLO~1/WSO2AP~2/WSO2AM~1.0/bin/../lib/dependencies/org.wso2.carbon.databridge.commons-6.1.45.jar"
+
+     [[platform.libraries]]
+        module = "gateway"
+        path = "C:/Users/KENNED~1/DOWNLO~1/WSO2AP~2/WSO2AM~1.0/bin/../lib/dependencies/org.wso2.carbon.databridge.commons.binary-6.1.45.jar"
+
+     [[platform.libraries]]
+        module = "gateway"
+        path = "C:/Users/KENNED~1/DOWNLO~1/WSO2AP~2/WSO2AM~1.0/bin/../lib/dependencies/disruptor-3.4.2.wso2v1.jar"
+
+     [[platform.libraries]]
+        module = "callhome"
+        path = "C:/Users/KENNED~1/DOWNLO~1/WSO2AP~2/WSO2AM~1.0/bin/../lib/gateway/platform/core-1.0.8.jar"
+
+
