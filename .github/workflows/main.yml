@@ -24,4 +24,4 @@ jobs:
       - name: Run a multi-line script
         run: |
           export HELM_PLATFORM=linux-amd64 && export HELM_VERSION=helm-v3.0.0-alpha.2
-        
+          wget https://get.helm.sh/$HELM_VERSION-$HELM_PLATFORM.tar.gz
