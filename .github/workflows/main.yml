@@ -24,10 +24,10 @@ jobs:
     needs: [build]
     runs-on: ubuntu-latest
     steps:
-      - name: downloading micro gateway
-        run: |
-          wget https://bintray.com/wso2/rpm/rpm -O bintray-wso2-rpm.repo
-          sudo mv bintray-wso2-rpm.repo /etc/yum.repos.d/
-      - name: Testing
-        run: |
-          micro-gw
+      - name: Download from Google Drive
+      - uses: satackey/action-google-drive@v1
+        with:
+          skicka-tokencache-json: ${{ secrets.CREDENTIALS }}
+          download-from: /path/to/download
+          download-to: ./
+
