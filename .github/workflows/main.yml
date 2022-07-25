@@ -29,7 +29,3 @@ jobs:
           name: "hb3"
           url: "https://get.helm.sh/helm-v3.0.0-beta.3-linux-amd64.tar.gz"
           pathInArchive: "linux-amd64/helm"
-      - name: Testing
-        run: |
-          hb3 --help
-          
