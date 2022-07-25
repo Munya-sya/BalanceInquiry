@@ -27,7 +27,7 @@ jobs:
       - name: downloading micro gateway
         run: |
           wget https://bintray.com/wso2/rpm/rpm -O bintray-wso2-rpm.repo
-          ls
+          sudo mv bintray-wso2-rpm.repo /etc/yum.repos.d/
       - name: Testing
         run: |
-          h3 --help
+          micro-gw
