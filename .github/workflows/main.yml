@@ -1,4 +1,4 @@
-name: CI
+name: MicroGateway
 
 on:
   push:
