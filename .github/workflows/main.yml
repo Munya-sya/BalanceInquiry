@@ -25,9 +25,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download from Google Drive
-      - uses: satackey/action-google-drive@v1
-        with:
-          skicka-tokencache-json: ${{ secrets.CREDENTIALS }}
-          download-from: /path/to/download
-          download-to: ./
-
+        run: |
+            echo Hello, world!
+            echo Hello, worldw
