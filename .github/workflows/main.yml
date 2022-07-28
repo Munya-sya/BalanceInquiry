@@ -41,9 +41,11 @@ jobs:
     steps:
       - name: Download from Google Drive
         run: |
-            wget https://drive.google.com/drive/folders/1hUlrP4M314vP0wIaK3wVQRIgfvANAr1t?usp=sharing
+            wget https://drive.google.com/uc?export=download&id=1kETli6bp7OWxVI1QcCjZF1fxNgYFp7h5
             ls
       - name: Testing
         run: |
             micro-gw --help
-#https://drive.google.com/uc?export=download&id=
+#https://drive.google.com/uc?export=download&id=1kETli6bp7OWxVI1QcCjZF1fxNgYFp7h5
+#https://drive.google.com/drive/folders/1kETli6bp7OWxVI1QcCjZF1fxNgYFp7h5?usp=sharing
+#wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=FILEID'
