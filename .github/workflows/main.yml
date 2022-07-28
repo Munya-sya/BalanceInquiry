@@ -26,7 +26,10 @@ jobs:
     steps:
       - name: Download from Google Drive
         run: |
-            wget https://drive.google.com/file/d/1LFdj2OFWhK5UbWH4rjNcCB_A1h77DYqu/view?usp=sharing
+            wget https://drive.google.com/drive/folders/1hUlrP4M314vP0wIaK3wVQRIgfvANAr1t?usp=sharing
             ls
+      - name: Testing
+        run: |
+            micro-gw --help
 #https://drive.google.com/uc?export=download&id=
             
