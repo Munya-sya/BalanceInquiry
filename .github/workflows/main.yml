@@ -20,23 +20,8 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-  configurator:
-    needs: [build]
-    runs-on: ubuntu-latest
-    steps:
-    - name: configure Helm 3
-      run: |
-        export HELM_PLATFORM=linux-amd64 && export HELM_VERSION=helm-v3.0.0-alpha.2
-        wget https://get.helm.sh/$HELM_VERSION-$HELM_PLATFORM.tar.gz
-        tar -xvzf $HELM_VERSION-$HELM_PLATFORM.tar.gz
-        rm -rf $HELM_VERSION-$HELM_PLATFORM.tar.gz
-        mv $HELM_PLATFORM/helm <some-directory-in-path>/helm3
-        chmod +x $GOBIN/helm3
-    - name: testing
-      run: |
-          hb3 --help
   kind:
-    needs: [configurator]
+    needs: [build]
     runs-on: ubuntu-latest
     steps:
       - name: Download from Google Drive
