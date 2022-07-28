@@ -24,13 +24,16 @@ jobs:
     needs: [build]
     runs-on: ubuntu-latest
     steps:
-      - uses: engineerd/configurator@v0.0.1
-        with:
-          name: "hb3"
-          url: "https://get.helm.sh/helm-v3.0.0-beta.3-linux-amd64.tar.gz"
-          pathInArchive: "linux-amd64/helm"
-      - name: Testing
-        run: |
+    - name: configure Helm 3
+      run: |
+        export HELM_PLATFORM=linux-amd64 && export HELM_VERSION=helm-v3.0.0-alpha.2
+        wget https://get.helm.sh/$HELM_VERSION-$HELM_PLATFORM.tar.gz
+        tar -xvzf $HELM_VERSION-$HELM_PLATFORM.tar.gz
+        rm -rf $HELM_VERSION-$HELM_PLATFORM.tar.gz
+        mv $HELM_PLATFORM/helm <some-directory-in-path>/helm3
+        chmod +x $GOBIN/helm3
+    - name: testing
+      run: |
           hb3 --help
   kind:
     needs: [configurator]
