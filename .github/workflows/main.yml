@@ -20,8 +20,20 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-  kind:
+  configurator:
     needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: engineerd/configurator@v0.0.1
+        with:
+          name: "hb3"
+          url: "https://get.helm.sh/helm-v3.0.0-beta.3-linux-amd64.tar.gz"
+          pathInArchive: "linux-amd64/helm"
+      - name: Testing
+        run: |
+          hb3 --help
+  kind:
+    needs: [configurator]
     runs-on: ubuntu-latest
     steps:
       - name: Download from Google Drive
