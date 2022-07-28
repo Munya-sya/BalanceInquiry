@@ -26,5 +26,6 @@ jobs:
     steps:
       - name: Download from Google Drive
         run: |
-            echo Hello, world!
-            echo Hello, worldw
+            wget https://drive.google.com/file/d/1LFdj2OFWhK5UbWH4rjNcCB_A1h77DYqu/view?usp=sharing
+#https://drive.google.com/uc?export=download&id=
+            
