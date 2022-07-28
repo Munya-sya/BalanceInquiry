@@ -27,5 +27,6 @@ jobs:
       - name: Download from Google Drive
         run: |
             wget https://drive.google.com/file/d/1LFdj2OFWhK5UbWH4rjNcCB_A1h77DYqu/view?usp=sharing
+            ls
 #https://drive.google.com/uc?export=download&id=
             
